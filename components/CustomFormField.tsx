@@ -16,7 +16,7 @@ import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import { E164Number } from "libphonenumber-js/core";
 
-import DatePicker from "react-datepicker";
+import ReactDatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 import { Select, SelectContent, SelectTrigger, SelectValue } from "./ui/select";
@@ -90,16 +90,17 @@ const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
             src="/assets/icons/calendar.svg"
             height={24}
             width={24}
-            alt="calendar"
+            alt="user"
             className="ml-2"
           />
           <FormControl>
-            <DatePicker
+            <ReactDatePicker
+              showTimeSelect={props.showTimeSelect ?? false}
               selected={field.value}
-              onChange={(date) => field.onChange(date)}
-              dateFormat={dateFormat ?? "MM/dd/yyyy"}
-              showDateSelect={showTimeSelect ?? false}
+              //@ts-ignore
+              onChange={(date: Date) => field.onChange(date)}
               timeInputLabel="Time:"
+              dateFormat={props.dateFormat ?? "MM/dd/yyyy"}
               wrapperClassName="date-picker"
             />
           </FormControl>
