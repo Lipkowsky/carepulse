@@ -16,16 +16,17 @@ import { InputFile } from "node-appwrite/file";
 
 export const createUser = async (user: CreateUserParams) => {
   try {
+   
     // Create new user -> https://appwrite.io/docs/references/1.5.x/server-nodejs/users#create
-    const newUser = await users.create(
+    const newuser = await users.create(
       ID.unique(),
       user.email,
       user.phone,
       undefined,
       user.name
     );
-
-    return parseStringify(newUser);
+ 
+    return parseStringify(newuser);
   } catch (error: any) {
     // Check existing user
     if (error && error?.code === 409) {
@@ -39,12 +40,17 @@ export const createUser = async (user: CreateUserParams) => {
   }
 };
 
+// GET USER
 export const getUser = async (userId: string) => {
   try {
     const user = await users.get(userId);
+
     return parseStringify(user);
   } catch (error) {
-    console.log(error);
+    console.error(
+      "An error occurred while retrieving the user details:",
+      error
+    );
   }
 };
 
