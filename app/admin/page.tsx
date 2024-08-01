@@ -16,7 +16,7 @@ const Admin = async () => {
   return (
     <div className="mx-auto flex max-w-7xl flex-col space-y-14">
       <header className="admin-header">
-        <Link href="" className="cursor-pointer">
+        <Link href="/" className="cursor-pointer">
           <Image
             height={32}
             width={162}
